@@ -1,0 +1,62 @@
+<html>
+	<head>
+		<title>line animation test</title>
+		<script src="https://raw.github.com/DmitryBaranovskiy/raphael/master/raphael-min.js"></script>
+		<script src="./raphael.set.hoverset.js"></script>
+		<style>
+			body {
+				background-color: #eee;
+				color: #333;
+			}
+		</style>
+	</head>
+	<body>
+		using hoverset:
+		<div id="paper1">
+		<div id="paper1output">
+		<script>
+			var r = Raphael('paper1', 350, 250);
+			r.rect(0, 0, 350, 250).attr('fill', '#ffffff');
+
+			r.setStart()
+			r.circle(50,50,100).attr({fill: '#996600', opacity: .5});
+			r.circle(100,100,100).attr({fill: '#996600', opacity: .5});
+			r.circle(150,150,100).attr({fill: '#996600', opacity: .5});
+			var set = r.setFinish();
+
+			r.setStart()
+			r.circle(300,50,100).attr({fill: '#660000', opacity: .5});
+			r.circle(250,100,100).attr({fill: '#660000', opacity: .5});
+			r.circle(200,150,100).attr({fill: '#660000', opacity: .5});
+			var set2 = r.setFinish();
+
+			set.push(set2);
+			
+			set.hoverset(r, function(){console.log('over')}, function(){console.log('out')})
+		</script>
+		
+		<br>not using hoverset:
+		<div id="paper2">
+		<div id="paper2output">
+		<script>
+			var r = Raphael('paper2', 350, 250);
+			r.rect(0, 0, 350, 250).attr('fill', '#ffffff');
+
+			r.setStart()
+			r.circle(50,50,100).attr({fill: '#996600', opacity: .5});
+			r.circle(100,100,100).attr({fill: '#996600', opacity: .5});
+			r.circle(150,150,100).attr({fill: '#996600', opacity: .5});
+			var set = r.setFinish();
+
+			r.setStart()
+			r.circle(300,50,100).attr({fill: '#660000', opacity: .5});
+			r.circle(250,100,100).attr({fill: '#660000', opacity: .5});
+			r.circle(200,150,100).attr({fill: '#660000', opacity: .5});
+			var set2 = r.setFinish();
+
+			set.push(set2);
+			
+			set.hover(function(){console.log('over')}, function(){console.log('out')})
+		</script>
+	</body>
+</html>
