@@ -1,0 +1,7 @@
+Manages the over/out mouse handlers of an entire set. It treats the set more like a single element than a set of individual elements. Mousing between overlapping set elements will not fire the mouse over/out functions - they will only be fired when the user's cursor enters/leaves the entire set. 
+
+There is the option to set a delay on mouse out, that will wait a the supplied number of milliseconds before firing the out handler. If the user happens to mouse back onto the set before the delay elapses, then the out handler is suppressed.
+
+Requires rapheal.js (https://github.com/DmitryBaranovskiy/raphael) to be included before loading this plugin.
+
+please check out the example.html to see it in action!
