@@ -8,12 +8,31 @@
 				background-color: #eee;
 				color: #333;
 			}
+
+			#paper1output, #paper2output {
+				border: 1px solid #ddd;
+				display: inline;
+				position: absolute;
+				left: 380px;
+				width: 200px;
+				height: 250px;
+				overflow: scroll;
+			}
+
+			#paper1output {
+				top: 25px;
+			}
+
+			#paper2output {
+				top: 310px;
+			}
+
 		</style>
 	</head>
 	<body>
 		using hoverset:
-		<div id="paper1">
-		<div id="paper1output">
+		<div id="paper1"></div>
+		<div id="paper1output"></div>
 		<script>
 			var r = Raphael('paper1', 350, 250);
 			r.rect(0, 0, 350, 250).attr('fill', '#ffffff');
@@ -32,12 +51,21 @@
 
 			set.push(set2);
 			
-			set.hoverset(r, function(){console.log('over')}, function(){console.log('out')})
+			set.hoverset(r, 
+				function(){
+					console.log('over')
+					document.getElementById('paper1output').innerHTML += 'over<br>';
+				}, 
+				function(){
+					console.log('out');
+					document.getElementById('paper1output').innerHTML += 'out<br>';
+				}
+			);
 		</script>
 		
 		<br>not using hoverset:
-		<div id="paper2">
-		<div id="paper2output">
+		<div id="paper2"></div>
+		<div id="paper2output"></div>
 		<script>
 			var r = Raphael('paper2', 350, 250);
 			r.rect(0, 0, 350, 250).attr('fill', '#ffffff');
@@ -56,7 +84,14 @@
 
 			set.push(set2);
 			
-			set.hover(function(){console.log('over')}, function(){console.log('out')})
+			set.hover(function(){
+					console.log('over')
+					document.getElementById('paper2output').innerHTML += 'over<br>';
+				}, 
+				function(){
+					console.log('out');
+					document.getElementById('paper2output').innerHTML += 'out<br>';
+				})
 		</script>
 	</body>
 </html>
