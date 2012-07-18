@@ -4,4 +4,4 @@ There is the option to set a delay on mouse out, that will wait a the supplied n
 
 Requires rapheal.js (https://github.com/DmitryBaranovskiy/raphael) to be included before loading this plugin.
 
-please check out the example.html to see it in action!
+[example page](http://jsfiddle.net/gthmb/h4nBx/)
