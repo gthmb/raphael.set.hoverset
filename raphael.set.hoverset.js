@@ -51,7 +51,7 @@ Raphael.st.hoverset = function(r, overfunc, outfunc, outdelay) {
 	}
 	
 	var lookForOver = function(set) {
-		ret = false;
+		var ret = false;
 		set.forEach(function(obj){
 			if(typeof(obj.forEach) == 'function') {
 				ret = lookForOver(obj);
