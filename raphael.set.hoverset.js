@@ -27,7 +27,8 @@ Raphael.st.hoverset = function(r, overfunc, outfunc, outdelay) {
 	var home = this;
 
 	var overhandler = function(evt){
-		r.getById(evt.target.raphaelid).data("Raphael.st.hoverset.over", true);
+		if( !evt ) evt = window.event;
+		r.getById( (evt.target || evt.srcElement).raphaelid ).data("Raphael.st.hoverset.over", true);
 
 		if(!home['Raphael.st.hoverset.overset']){
 			overfunc.call(this, evt);
@@ -37,8 +38,9 @@ Raphael.st.hoverset = function(r, overfunc, outfunc, outdelay) {
 	}
 
 	var outhandler = function(evt){
+		if( !evt ) evt = window.event;
 		var overset = false;
-		r.getById(evt.target.raphaelid).data("Raphael.st.hoverset.over", false);
+		r.getById( (evt.target || evt.srcElement).raphaelid ).data("Raphael.st.hoverset.over", false);
 		
 		clearTimeout(home['Raphael.st.hoverset.timeout']);
 		home['Raphael.st.hoverset.timeout'] = setTimeout(function(){
